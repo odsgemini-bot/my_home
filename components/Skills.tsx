@@ -1,41 +1,46 @@
-
 import React from 'react';
 import { SKILLS } from '../constants';
-import { Check } from 'lucide-react';
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="skills" className="py-24 bg-white px-6">
+      <div className="container mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl font-black text-neutral-900 mb-4">보유 기술 및 강점</h2>
-          <p className="text-neutral-500 text-lg">최적의 도구를 선택하여 최고의 효율을 만들어냅니다.</p>
+          <h2 className="text-4xl font-black text-neutral-900 mb-4">보유 기술 및 도구</h2>
+          <div className="w-20 h-1.5 bg-emerald-500 mx-auto rounded-full"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {SKILLS.map((skill, idx) => (
-            <div key={idx} className="group relative p-10 bg-neutral-50 rounded-[40px] hover:bg-emerald-600 transition-all duration-500 overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-150 transition-transform duration-500">
-                {React.cloneElement(skill.icon as React.ReactElement, { className: 'w-32 h-32 text-neutral-900 group-hover:text-white' })}
-              </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                  {skill.icon}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {SKILLS.map((skill, idx) => {
+            const IconComponent = skill.icon;
+            return (
+              <div key={idx} className="group p-10 bg-neutral-50 rounded-[40px] hover:bg-white hover:shadow-2xl hover:shadow-emerald-100 transition-all duration-500 border border-transparent hover:border-emerald-100">
+                <div className="mb-8 transform group-hover:scale-110 transition-transform duration-500 inline-block">
+                  <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 transition-colors">
+                    <div className="text-emerald-600 group-hover:text-white transition-colors">
+                      <IconComponent className="w-8 h-8" />
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-black text-neutral-900 mb-4 group-hover:text-white transition-colors">{skill.name}</h3>
-                <p className="text-neutral-500 group-hover:text-emerald-50 transition-colors leading-relaxed">
+                <h3 className="text-2xl font-black text-neutral-900 mb-4">{skill.name}</h3>
+                <p className="text-neutral-500 leading-relaxed text-lg">
                   {skill.description}
                 </p>
-                <ul className="mt-8 space-y-3 opacity-0 group-hover:opacity-100 transition-opacity delay-100">
-                  {['최상위 전문성', '실무 중심 활용', '지속적 학습'].map((item, i) => (
-                    <li key={i} className="flex items-center text-white text-sm font-bold">
-                      <Check className="w-4 h-4 mr-2" /> {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+        
+        <div className="mt-20 p-12 bg-neutral-900 rounded-[40px] text-white flex flex-col md:flex-row items-center justify-between gap-8">
+          <div>
+            <h4 className="text-2xl font-bold mb-2">어떠한 환경에서도 최적의 도구를 찾아냅니다.</h4>
+            <p className="text-neutral-400">현대적인 웹 프레임워크부터 업무 효율을 위한 오피스 자동화까지 포괄적인 기술 지원이 가능합니다.</p>
+          </div>
+          <div className="flex gap-4">
+            <span className="px-4 py-2 bg-neutral-800 rounded-xl text-emerald-400 font-bold border border-neutral-700">TypeScript</span>
+            <span className="px-4 py-2 bg-neutral-800 rounded-xl text-emerald-400 font-bold border border-neutral-700">Excel Expert</span>
+            <span className="px-4 py-2 bg-neutral-800 rounded-xl text-emerald-400 font-bold border border-neutral-700">System Design</span>
+          </div>
         </div>
       </div>
     </section>

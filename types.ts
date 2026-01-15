@@ -1,10 +1,9 @@
-// Import React to resolve the React namespace for React.ReactNode
-import React from 'react';
+import { LucideIcon } from 'lucide-react';
 
 export interface Skill {
   name: string;
   description: string;
-  icon: React.ReactNode;
+  icon: LucideIcon;
 }
 
 export interface CareerItem {
